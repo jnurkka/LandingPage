@@ -22,12 +22,31 @@ html, body {
   width: 100%;
   max-width: none;
 }
+.heading {
+  position: absolute;
+  top: 0;
+  height: 90px;
+  width: 100%;
+}
 .logo {
   float: left;
   height: 70px;
   width: auto;
   margin: 10px;
-  position: absolute;
+}
+.headerlinks {
+  display: table;
+  float: right;
+  height: 70px;
+  margin: 10px;
+  text-align: right;
+}
+.socialicon {
+  font-size: 130%;
+  color: #FFF;
+  vertical-align: middle;
+  display: table-cell;
+  padding: 4px;
 }
 .content {
   max-width: 500px;
