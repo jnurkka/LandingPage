@@ -1,97 +1,96 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 @import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=Cookie");
 
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
+  font-family: 'Cookie';
 }
-.intro {
+h1 {
+  color: #F9F3F4;
+  text-shadow: 0px 0px 300px #000;
+  font-size: 500%;
+  text-align: center;
+  padding: 1%;
+  margin: 0;
+}
+h2 {
+  font-style: italic;
+  font-size: 200%;
+  font-weight: 100;
+  text-align: center;
+  color: #F9F3F4;
+  margin: 0;
+}
+p {
+  font-size: 100%;
+  line-height: 210%;
+  text-align: justify;
+  margin: 3%;
+  font-family: 'Open Sans';
+}
+a {
+  color: unset;
+}
+#intro {
   height: 100%;
   width: 100%;
   margin: auto;
-  background: url("background.jpg") no-repeat 50% 50%;
+  background: url("jaakko.jpg") no-repeat 0% 50%;
   display: table;
   top: 0;
   background-size: cover;
 }
-.intro .inner {
+#intro .inner {
   display: table-cell;
   vertical-align: middle;
   width: 100%;
   max-width: none;
 }
-.heading {
-  position: absolute;
-  top: 0;
-  height: 90px;
-  width: 100%;
-}
-.logo {
-  float: left;
-  height: 70px;
-  width: auto;
-  margin: 10px;
-}
-.headerlinks {
-  display: table;
-  float: right;
-  height: 70px;
-  margin: 10px;
-  text-align: right;
-}
-.socialicon {
-  font-size: 130%;
-  color: #FFF;
-  vertical-align: middle;
-  display: table-cell;
-  padding: 4px;
-}
-.content {
+#intro .content {
   max-width: 500px;
   margin: 0 auto;
-  text-align: center;
 }
-.content h1 {
-  font-family: 'Raleway', sans-serif;
-  color: #F9F3F4;
-  text-shadow: 0px 0px 300px #000;
-  font-size: 500%;
+#content {
   padding: 5%;
 }
-.btn {
-  border-radius: 9px;
-  font-family: 'Oswald', sans-serif;
-  color: #E1CCB3;
-  font-size: 135%;
-  padding: 10px 20px;
-  border: solid #E1CCB3 3px;
-  text-transform: uppercase;
-  text-decoration: none;
+#content h1 {
+  color: #000000;
 }
-.btn:hover {
-  color: #FFF;
-  border: solid #FFF 3px;
+#icons {
+  display: table;
+  margin: auto;
 }
-p {
-  font-size: 160%;
-  line-height: 210%;
-  text-align: justify;
-  margin: 3%;
-  font-family: sans-serif;
+.socialicon {
+  font-size: 400%;
+  color: #000;
+  display: table-cell;
+  padding: 20px;
 }
-
+.fa-linkedin:hover {
+  color: #0077B5;
+}
+.fa-instagram:hover {
+  color: #DD2A7B;
+}
+.fa-facebook-square:hover {
+  color: #3B5998;
+}
+.fa-envelope:hover {
+  color: #ff6100;
+}
 @media screen and (max-width: 768px) {
-  .content h1 {
+  h1 {
+    font-size: 300%;
+  }
+  #intro .inner {
+    vertical-align: top;
+    padding-top: 10%;
+  }
+  .socialicon {
     font-size: 200%;
-  }
-  .btn {
-    font-size: 110%;
-    padding: 7px 15px;
-  }
-  p {
-    font-size: 100%;
-    line-height: 160%;
   }
 }

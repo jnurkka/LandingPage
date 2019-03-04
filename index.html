@@ -1,34 +1,50 @@
 <!DOCTYPE html>
+
 <head>
-  <title>Designer, full-stack developer, data scientist, entrepreneur - Jaakko Nurkka</title>
+  <title>Jaakko Nurkka</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo|Open+Sans|Dancing+Script">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <!-- remember to change to production production version, optimized for size and speed
   <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
 <body>
-  <section class="intro">
-    <div class="heading">
-      <img class="logo" src="jaakko_logo_white.svg" />
-      <div class="headerlinks">
-        <span class="socialicon"><i class="fab fa-linkedin"></i></span>
-        <span class="socialicon"><i class="fab fa-instagram"></i></span>
-        <span class="socialicon"><i class="fab fa-facebook-square"></i></span>
-        <span class="socialicon"><i class="fas fa-envelope"></i></span>
-      </div>
-    </div>
+  <section id="intro">
     <div class="inner">
-      <div id="app" class="content">
-        <h1>{{ heading }}</h1>
-        <a class="btn" href="#">Check out my portfolio</a>
+      <div id="hello" class="content">
+        <h2>{{ greeting }}</h2>
+        <h1>{{ name }}</h1>
       </div>
     </div>
   </section>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer arcu dui, mollis scelerisque turpis et, viverra dictum nisi. Curabitur rhoncus, ex vel efficitur consequat, velit libero volutpat justo, et lobortis ex elit sed quam. Pellentesque euismod mi in diam ultrices, ac pharetra odio cursus. Aenean vitae dui et quam pharetra pharetra quis vel diam. Nullam ullamcorper placerat urna, a egestas sapien consequat at. Aliquam quis dapibus nisl. Etiam velit mi, pretium nec massa in, condimentum placerat metus.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer arcu dui, mollis scelerisque turpis et, viverra dictum nisi. Curabitur rhoncus, ex vel efficitur consequat, velit libero volutpat justo, et lobortis ex elit sed quam. Pellentesque euismod mi in diam ultrices, ac pharetra odio cursus. Aenean vitae dui et quam pharetra pharetra quis vel diam. Nullam ullamcorper placerat urna, a egestas sapien consequat at. Aliquam quis dapibus nisl. Etiam velit mi, pretium nec massa in, condimentum placerat metus.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer arcu dui, mollis scelerisque turpis et, viverra dictum nisi. Curabitur rhoncus, ex vel efficitur consequat, velit libero volutpat justo, et lobortis ex elit sed quam. Pellentesque euismod mi in diam ultrices, ac pharetra odio cursus. Aenean vitae dui et quam pharetra pharetra quis vel diam. Nullam ullamcorper placerat urna, a egestas sapien consequat at. Aliquam quis dapibus nisl. Etiam velit mi, pretium nec massa in, condimentum placerat metus.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer arcu dui, mollis scelerisque turpis et, viverra dictum nisi. Curabitur rhoncus, ex vel efficitur consequat, velit libero volutpat justo, et lobortis ex elit sed quam. Pellentesque euismod mi in diam ultrices, ac pharetra odio cursus. Aenean vitae dui et quam pharetra pharetra quis vel diam. Nullam ullamcorper placerat urna, a egestas sapien consequat at. Aliquam quis dapibus nisl. Etiam velit mi, pretium nec massa in, condimentum placerat metus.</p>
+  <section id="content">
+    <!-- <div id="articles">
+      <h1>{{ heading }}</h1>
+      <ul id="articles">
+        <li v-for="item in entries">
+          <h2>{{ item.title }}</h2>
+          <p>{{ item.teaser }}</p>
+        </li>
+      </ul>
+    </div> -->
+    <div id="contact">
+      <h1>{{ heading }}</h1>
+      <div id="icons">
+        <span class="socialicon"><a href="https://www.linkedin.com/jnurkka"><i class="fab fa-linkedin"></i></a></span>
+        <span class="socialicon"><a href="https://www.instagram.com/jaakkonurkka"><i
+              class="fab fa-instagram"></i></a></span>
+        <span class="socialicon"><a href="https://www.facebook.com/jaakko.nurkka"><i
+              class="fab fa-facebook-square"></i></a></span>
+        <span class="socialicon"><a href="#" class="cryptedmail" data-name="jaakko" data-domain="nurkka" data-tld="me"
+            onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"><i
+              class="fas fa-envelope"></i></a></span>
+      </div>
+    </div>
+  </section>
   <script src="index.js"></script>
 </body>
+
 </html>
