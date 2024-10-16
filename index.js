@@ -5,12 +5,12 @@ function vh(percent) {
 
 window.onscroll = function() {
   if (window.pageYOffset <= vh(2)) {
-    document.getElementById("sticky-heading").style.top = "8vw";
+    document.getElementById("sticky-heading").style.top = "8vmax";
     document.getElementById("greeting").innerText = "Moi, I'm Jaakko 👋";
-    document.getElementById("job-title").style.top = "14vw";
+    document.getElementById("job-title").style.top = "14vmax";
     document.getElementById("job-title").style.opacity = "100%";
   } else {
-    document.getElementById("sticky-heading").style.top = "2vh";
+    document.getElementById("sticky-heading").style.top = "2vmax";
     document.getElementById("greeting").innerText = "Jaakko Nurkka";
     document.getElementById("job-title").style.top = "0";
     document.getElementById("job-title").style.opacity = "0%";

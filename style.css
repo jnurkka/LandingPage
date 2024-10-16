@@ -12,13 +12,13 @@ html, body {
 h1 {
   color: #F9F3F4;
   text-shadow: 0px 0px 300px #000;
-  font-size: 4.5vw;
+  font-size: 3.5vmax;
   font-weight: 600;
   line-height: 100%;
   margin: 0;
 }
 h2 {
-  font-size: 4vw;
+  font-size: 3vmax;
   font-family: 'Cookie';
   font-weight: 100;
   color: #F9F3F4;
@@ -30,14 +30,13 @@ a {
 
 #sticky-heading {
   position: sticky;
-  top: 8vw;
-  margin: 0 5vw;
+  top: 8vmax;
 }
 
 #job-title {
   position: absolute;
   width: 40%;
-  top: 14vw;
+  top: 14vmax;
 }
 
 #intro {
@@ -55,7 +54,7 @@ a {
 }
 
 .content {
-  margin: 0 5vw;
+  margin: 0 5vmax;
   color: #F9F3F4;
   transition: 1s ease-in-out;
 }
@@ -64,9 +63,9 @@ a {
   margin: auto;
 }
 .socialicon {
-  font-size: 5vw;
+  font-size: 4vmax;
   display: table-cell;
-  padding: 20px;
+  padding: 2vmax;
 }
 .fa-linkedin:hover {
   color: #0077B5;
