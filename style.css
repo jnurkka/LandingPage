@@ -12,6 +12,16 @@
   /* Spacing */
   --spacing-page: 5vw;
   --spacing-section: 1rem;
+
+  /* Color opacity variants */
+  --color-primary-10: rgba(75, 112, 165, 0.1);
+  --color-primary-15: rgba(75, 112, 165, 0.15);
+  --color-primary-20: rgba(75, 112, 165, 0.2);
+  --color-primary-25: rgba(75, 112, 165, 0.25);
+  --color-primary-30: rgba(75, 112, 165, 0.3);
+  --color-primary-40: rgba(75, 112, 165, 0.4);
+  --color-primary-50: rgba(75, 112, 165, 0.5);
+  --color-primary-60: rgba(75, 112, 165, 0.6);
 }
 
 html, body {
@@ -93,8 +103,8 @@ a {
 }
 
 .project {
-  background: rgba(75, 112, 165, 0.1);
-  border: 1px solid rgba(75, 112, 165, 0.15);
+  background: var(--color-primary-10);
+  border: 1px solid var(--color-primary-15);
   border-radius: 12px;
   padding: 2rem;
   margin: var(--spacing-section) 0;
@@ -108,7 +118,7 @@ a {
   position: absolute;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(75, 112, 165, 0.25), transparent 80%);
+  background: radial-gradient(circle, var(--color-primary-25), transparent 80%);
   border-radius: 50%;
   left: var(--glow-x, 50%);
   top: var(--glow-y, 50%);
@@ -127,7 +137,7 @@ a {
   border-radius: 12px;
   background: radial-gradient(
     circle at var(--glow-x, 50%) var(--glow-y, 50%),
-    rgba(75, 112, 165, 0.6),
+    var(--color-primary-60),
     transparent 80%
   ) border-box;
   -webkit-mask:
@@ -155,9 +165,9 @@ a {
 
 .project:hover {
   transform: translateY(-2px);
-  background: rgba(75, 112, 165, 0.15);
-  border-color: rgba(75, 112, 165, 0.25);
-  box-shadow: 0 4px 20px rgba(75, 112, 165, 0.15);
+  background: var(--color-primary-15);
+  border-color: var(--color-primary-25);
+  box-shadow: 0 4px 20px var(--color-primary-15);
 }
 
 .title {
@@ -227,7 +237,7 @@ a {
 
 .read-more {
   background: transparent;
-  border: 1px solid rgba(75, 112, 165, 0.3);
+  border: 1px solid var(--color-primary-30);
   color: #4B70A5;
   padding: 0.5rem 1rem;
   border-radius: 6px;
@@ -238,14 +248,14 @@ a {
 }
 
 .read-more:hover {
-  background: rgba(75, 112, 165, 0.1);
-  border-color: rgba(75, 112, 165, 0.4);
+  background: var(--color-primary-10);
+  border-color: var(--color-primary-40);
   color: var(--color-text);
 }
 
 .project.expanded .read-more {
-  background: rgba(75, 112, 165, 0.15);
-  border-color: rgba(75, 112, 165, 0.4);
+  background: var(--color-primary-15);
+  border-color: var(--color-primary-40);
 }
 
 #social-links {
@@ -275,7 +285,7 @@ a {
   position: absolute;
   width: 80px;
   height: 80px;
-  background: radial-gradient(circle, rgba(75, 112, 165, 0.2), transparent 70%);
+  background: radial-gradient(circle, var(--color-primary-20), transparent 70%);
   border-radius: 50%;
   left: 50%;
   top: 50%;
@@ -291,7 +301,7 @@ a {
   inset: -12px;
   border: 1px solid transparent;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(75, 112, 165, 0.5), transparent 70%) border-box;
+  background: radial-gradient(circle, var(--color-primary-50), transparent 70%) border-box;
   -webkit-mask:
     linear-gradient(#fff 0 0) padding-box,
     linear-gradient(#fff 0 0);
@@ -320,7 +330,7 @@ a {
 }
 
 .socialicon:hover a {
-  color: rgba(75, 112, 165, 1);
+  color: var(--color-primary-40);
 }
 
 #contact {
@@ -338,7 +348,7 @@ a {
   min-width: 3.5rem;
   height: 3.5rem;
   border-radius: 1.75rem;
-  background: rgba(75, 112, 165, 0.1);
+  background: var(--color-primary-10);
   border: none;
   color: var(--color-text);
   font-size: 1.2rem;
@@ -387,11 +397,11 @@ a {
   content: '';
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(75, 112, 165, 0.15);
+  border: 1px solid var(--color-primary-15);
   border-radius: 1.75rem;
   background: radial-gradient(
     circle at var(--glow-x, 50%) var(--glow-y, 50%),
-    rgba(75, 112, 165, 0.5),
+    var(--color-primary-50),
     transparent 70%
   ) border-box;
   -webkit-mask:
@@ -436,7 +446,7 @@ a {
   position: absolute;
   width: 150px;
   height: 150px;
-  background: radial-gradient(circle, rgba(75, 112, 165, 0.2), transparent 70%);
+  background: radial-gradient(circle, var(--color-primary-20), transparent 70%);
   border-radius: 50%;
   left: var(--glow-x, 50%);
   top: var(--glow-y, 50%);
