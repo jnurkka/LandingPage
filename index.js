@@ -6,7 +6,7 @@ function vh(percent) {
 // Render functions
 function renderProject(project) {
   return `
-    <div class="project">
+    <div class="project glow-container">
       <span class="date">${project.date}</span>
       <h2 class="title">${project.title}</h2>
       <div class="project-content">
@@ -36,6 +36,50 @@ function renderSection(items, sectionTitle) {
   return container;
 }
 
+// Glow effect handler
+function initializeGlowEffect(element) {
+  let glowX = 0;
+  let glowY = 0;
+  let rafId = null;
+
+  function updateGlow() {
+    if (!element.matches(':hover')) return;
+
+    const targetX = parseFloat(element.getAttribute('data-target-x') || 0);
+    const targetY = parseFloat(element.getAttribute('data-target-y') || 0);
+
+    glowX += (targetX - glowX) * 0.1;
+    glowY += (targetY - glowY) * 0.1;
+
+    element.style.setProperty('--glow-x', `${glowX}px`);
+    element.style.setProperty('--glow-y', `${glowY}px`);
+
+    rafId = requestAnimationFrame(updateGlow);
+  }
+
+  element.addEventListener('mousemove', (e) => {
+    const rect = element.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    element.classList.add('glowing');
+    element.setAttribute('data-target-x', x);
+    element.setAttribute('data-target-y', y);
+
+    if (!rafId) {
+      rafId = requestAnimationFrame(updateGlow);
+    }
+  });
+
+  element.addEventListener('mouseleave', () => {
+    element.classList.remove('glowing');
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  });
+}
+
 // Initialize page
 document.addEventListener('DOMContentLoaded', function() {
   const main = document.getElementById('main');
@@ -63,103 +107,17 @@ document.addEventListener('DOMContentLoaded', function() {
       readMoreButton.addEventListener('click', function() {
         const project = this.closest('.project');
         project.classList.toggle('expanded');
-
-        if (project.classList.contains('expanded')) {
-          this.textContent = 'Show less';
-        } else {
-          this.textContent = 'Read more';
-        }
+        this.textContent = project.classList.contains('expanded') ? 'Show less' : 'Read more';
       });
     }
 
-    // Add mousemove handler for glow effect
-    let glowX = 0;
-    let glowY = 0;
-    let rafId = null;
-
-    function updateGlow() {
-      if (!project.classList.contains('glowing')) return;
-
-      const targetX = parseFloat(project.getAttribute('data-target-x') || 0);
-      const targetY = parseFloat(project.getAttribute('data-target-y') || 0);
-
-      // Smooth interpolation
-      glowX += (targetX - glowX) * 0.1;
-      glowY += (targetY - glowY) * 0.1;
-
-      project.style.setProperty('--glow-x', `${glowX}px`);
-      project.style.setProperty('--glow-y', `${glowY}px`);
-
-      rafId = requestAnimationFrame(updateGlow);
-    }
-
-    project.addEventListener('mousemove', (e) => {
-      const rect = project.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      project.classList.add('glowing');
-      project.setAttribute('data-target-x', x);
-      project.setAttribute('data-target-y', y);
-
-      if (!rafId) {
-        rafId = requestAnimationFrame(updateGlow);
-      }
-    });
-
-    // Add mouseout handler to remove glow
-    project.addEventListener('mouseleave', () => {
-      project.classList.remove('glowing');
-      project.style.setProperty('--glow-opacity', '0');
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-        rafId = null;
-      }
-    });
+    // Initialize glow effect
+    initializeGlowEffect(project);
   });
 
   // Initialize back to top button
   const backToTop = document.getElementById('back-to-top');
-
-  // Add glow effect to back to top button
-  let buttonGlowX = 0;
-  let buttonGlowY = 0;
-  let buttonRafId = null;
-
-  function updateButtonGlow() {
-    if (!backToTop.matches(':hover')) return;
-
-    const targetX = parseFloat(backToTop.getAttribute('data-target-x') || 0);
-    const targetY = parseFloat(backToTop.getAttribute('data-target-y') || 0);
-
-    buttonGlowX += (targetX - buttonGlowX) * 0.1;
-    buttonGlowY += (targetY - buttonGlowY) * 0.1;
-
-    backToTop.style.setProperty('--glow-x', `${buttonGlowX}px`);
-    backToTop.style.setProperty('--glow-y', `${buttonGlowY}px`);
-
-    buttonRafId = requestAnimationFrame(updateButtonGlow);
-  }
-
-  backToTop.addEventListener('mousemove', (e) => {
-    const rect = backToTop.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    backToTop.setAttribute('data-target-x', x);
-    backToTop.setAttribute('data-target-y', y);
-
-    if (!buttonRafId) {
-      buttonRafId = requestAnimationFrame(updateButtonGlow);
-    }
-  });
-
-  backToTop.addEventListener('mouseleave', () => {
-    if (buttonRafId) {
-      cancelAnimationFrame(buttonRafId);
-      buttonRafId = null;
-    }
-  });
+  initializeGlowEffect(backToTop);
 
   backToTop.addEventListener('click', () => {
     window.scrollTo({

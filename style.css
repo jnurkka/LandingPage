@@ -35,6 +35,13 @@
   --font-size-body: 1rem;
   --font-size-button: 1.2rem;
   --font-size-small: 0.9rem;
+
+  /* Glow Effect */
+  --glow-size-large: 600px;
+  --glow-size-medium: 150px;
+  --glow-size-small: 80px;
+  --glow-spread: 80%;
+  --glow-spread-social: 70%;
 }
 
 /* Base Styles */
@@ -190,13 +197,15 @@ a { color: unset; }
   color: var(--color-text);
 }
 
-/* Project Card Hover & Glow Effects */
-.project::before {
+/* Glow Effects */
+.glow-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-container::before {
   content: '';
   position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, var(--color-primary-25), transparent 80%);
   border-radius: 50%;
   left: var(--glow-x, 50%);
   top: var(--glow-y, 50%);
@@ -207,40 +216,196 @@ a { color: unset; }
   z-index: 1;
 }
 
-.project::after {
+.glow-container::after {
   content: '';
   position: absolute;
+  opacity: 0;
+  transition: opacity var(--transition-default);
+  z-index: 1;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+.glow-container.glowing::before,
+.glow-container.glowing::after {
+  opacity: 1;
+}
+
+/* Project Card Glow */
+.project.glow-container::before {
+  width: var(--glow-size-large);
+  height: var(--glow-size-large);
+  background: radial-gradient(circle, var(--color-primary-25), transparent var(--glow-spread));
+}
+
+.project.glow-container::after {
   inset: 0;
   border: 1px solid transparent;
   border-radius: 12px;
   background: radial-gradient(
     circle at var(--glow-x, 50%) var(--glow-y, 50%),
     var(--color-primary-60),
-    transparent 80%
+    transparent var(--glow-spread)
   ) border-box;
-  -webkit-mask:
-    linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity var(--transition-default);
-  z-index: 1;
 }
 
-.project.glowing::before {
-  opacity: 1;
+/* Social Icon Glow */
+.socialicon.glow-container::before {
+  width: var(--glow-size-small);
+  height: var(--glow-size-small);
+  background: radial-gradient(circle, var(--color-primary-20), transparent var(--glow-spread-social));
 }
 
-.project.glowing::after {
-  opacity: 1;
+.socialicon.glow-container::after {
+  inset: -12px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-primary-50), transparent var(--glow-spread-social)) border-box;
 }
 
-.project:hover {
+/* Back to Top Button Glow */
+#back-to-top.glow-container::before {
+  width: var(--glow-size-medium);
+  height: var(--glow-size-medium);
+  background: radial-gradient(circle, var(--color-primary-25), transparent var(--glow-spread));
+}
+
+#back-to-top.glow-container::after {
+  inset: 0;
+  border: 1px solid var(--color-primary-25);
+  border-radius: 1.75rem;
+  background: radial-gradient(
+    circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    var(--color-primary-60),
+    transparent var(--glow-spread)
+  ) border-box;
+}
+
+/* Project Card Hover & Glow Effects */
+.project.glow-container:hover {
   transform: translateY(-2px);
   background: var(--color-primary-15);
   border-color: var(--color-primary-25);
   box-shadow: 0 4px 20px var(--color-primary-15);
+}
+
+/* Social Links */
+#social-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.scrolled #social-links {
+  opacity: 0;
+  transform: translateX(20px);
+  pointer-events: none;
+}
+
+.socialicon {
+  position: relative;
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.socialicon.glow-container:hover {
+  transform: scale(1.15);
+}
+
+.socialicon a {
+  position: relative;
+  z-index: 2;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: color var(--transition-default);
+}
+
+.socialicon:hover a {
+  color: var(--color-primary-40);
+}
+
+/* Layout Utilities */
+#main {
+  padding-bottom: 8rem;  /* Add space for the expanded button */
+}
+
+#contact {
+  display: none;
+}
+
+/* Back to Top Button */
+#back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-primary-25);
+  border-radius: 1.75rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(1rem);
+  pointer-events: none;
+  z-index: 1000;
+  min-width: 2.5rem;
+  width: 2.5rem;
+  overflow: hidden;
+  transition: all var(--transition-default), width var(--transition-slow);
+}
+
+#back-to-top i {
+  position: relative;
+  z-index: 2;
+  transition: margin var(--transition-slow);
+}
+
+#back-to-top .button-text {
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-width var(--transition-slow), opacity var(--transition-default) 0.2s;
+  font-size: var(--font-size-small);
+  white-space: nowrap;
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#back-to-top.expanded {
+  width: 8.5rem;
+}
+
+#back-to-top.expanded .button-text {
+  opacity: 1;
+  max-width: 200px;
+}
+
+#back-to-top.expanded i {
+  margin-right: 0.75rem;
+}
+
+#back-to-top:hover {
+  background: var(--color-primary-15);
+  border-color: var(--color-primary-25);
+  box-shadow: 0 4px 20px var(--color-primary-15);
+}
+
+#back-to-top.glow-container:hover::before,
+#back-to-top.glow-container:hover::after {
+  opacity: 1;
 }
 
 /* Project Card Expand/Collapse */
@@ -275,189 +440,4 @@ a { color: unset; }
 .project.expanded .read-more {
   background: var(--color-primary-15);
   border-color: var(--color-primary-40);
-}
-
-/* Social Links */
-#social-links {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.scrolled #social-links {
-  opacity: 0;
-  transform: translateX(20px);
-  pointer-events: none;
-}
-
-.socialicon {
-  position: relative;
-  font-size: 1.8rem;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.socialicon::before {
-  content: '';
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  background: radial-gradient(circle, var(--color-primary-20), transparent 70%);
-  border-radius: 50%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1;
-}
-
-.socialicon::after {
-  content: '';
-  position: absolute;
-  inset: -12px;
-  border: 1px solid transparent;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--color-primary-50), transparent 70%) border-box;
-  -webkit-mask:
-    linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1;
-}
-
-.socialicon:hover {
-  transform: scale(1.15);
-}
-
-.socialicon:hover::before,
-.socialicon:hover::after {
-  opacity: 1;
-}
-
-.socialicon a {
-  position: relative;
-  z-index: 2;
-  text-decoration: none;
-  color: var(--color-text);
-  transition: color var(--transition-default);
-}
-
-.socialicon:hover a {
-  color: var(--color-primary-40);
-}
-
-/* Layout Utilities */
-#main {
-  padding-bottom: 8rem;  /* Add space for the expanded button */
-}
-
-#contact {
-  display: none;
-}
-
-/* Back to Top Button */
-#back-to-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  min-width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 1.75rem;
-  background: var(--color-primary-10);
-  border: none;
-  color: var(--color-text);
-  font-size: var(--font-size-button);
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all var(--transition-default);
-  pointer-events: none;
-  z-index: 1000;
-  padding: 0 1.2rem;
-  display: flex;
-  align-items: center;
-}
-
-#back-to-top i {
-  position: relative;
-  z-index: 2;
-  transition: margin 0.5s ease;
-}
-
-#back-to-top .button-text {
-  opacity: 0;
-  max-width: 0;
-  overflow: hidden;
-  transition: max-width 0.5s ease, opacity 0.3s ease 0.2s;
-  font-size: var(--font-size-small);
-}
-
-#back-to-top.expanded {
-  min-width: 8.5rem;
-}
-
-#back-to-top.expanded .button-text {
-  opacity: 1;
-  max-width: 200px;
-}
-
-#back-to-top.expanded i {
-  margin-right: 0.5rem;
-}
-
-#back-to-top::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 1px solid var(--color-primary-15);
-  border-radius: 1.75rem;
-  background: radial-gradient(
-    circle at var(--glow-x, 50%) var(--glow-y, 50%),
-    var(--color-primary-50),
-    transparent 70%
-  ) border-box;
-  -webkit-mask:
-    linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-#back-to-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-#back-to-top:hover::before {
-  opacity: 1;
-}
-
-#back-to-top:hover::after {
-  opacity: 1;
-}
-
-#back-to-top::before {
-  content: '';
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  background: radial-gradient(circle, var(--color-primary-20), transparent 70%);
-  border-radius: 50%;
-  left: var(--glow-x, 50%);
-  top: var(--glow-y, 50%);
-  transform: translate(-50%, -50%);
-  opacity: var(--glow-opacity, 0);
-  transition: opacity 0.3s ease;
-  pointer-events: none;
 }

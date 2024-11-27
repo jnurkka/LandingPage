@@ -15,9 +15,15 @@
     <div id="header-content">
       <span id="greeting">Moi, I'm Jaakko 👋</span>
       <div id="social-links">
-        <span class="socialicon"><a href="https://www.linkedin.com/in/jnurkka" aria-label="Check out my profile on LinkedIn"><i class="fab fa-linkedin"></i></a></span>
-        <span class="socialicon"><a href="https://www.instagram.com/jaakkonurkka" aria-label="Check out my profile on Instagram"><i class="fab fa-instagram"></i></a></span>
-        <span class="socialicon"><a href="#" aria-label="Write me an email" class="cryptedmail" data-name="jaakko" data-domain="nurkka" data-tld="me" onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"><i class="fas fa-envelope"></i></a></span>
+        <div class="socialicon glow-container">
+          <a href="https://www.linkedin.com/in/jnurkka" aria-label="Check out my profile on LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="socialicon glow-container">
+          <a href="https://www.instagram.com/jaakkonurkka" aria-label="Check out my profile on Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="socialicon glow-container">
+          <a href="#" aria-label="Write me an email" class="cryptedmail" data-name="jaakko" data-domain="nurkka" data-tld="me" onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"><i class="fas fa-envelope"></i></a>
+        </div>
       </div>
     </div>
   </div>
@@ -29,7 +35,7 @@
   <div id="main" class="content">
     <!-- Content will be dynamically inserted here -->
   </div>
-  <button id="back-to-top" aria-label="Scroll back to top">
+  <button id="back-to-top" class="glow-container" aria-label="Scroll back to top">
     <i class="fas fa-chevron-up"></i>
     <span class="button-text">Back to top</span>
   </button>
