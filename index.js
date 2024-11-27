@@ -84,6 +84,51 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     }
+
+    // Add mousemove handler for glow effect
+    let glowX = 0;
+    let glowY = 0;
+    let rafId = null;
+
+    function updateGlow() {
+      if (!project.classList.contains('glowing')) return;
+
+      const targetX = parseFloat(project.getAttribute('data-target-x') || 0);
+      const targetY = parseFloat(project.getAttribute('data-target-y') || 0);
+
+      // Smooth interpolation
+      glowX += (targetX - glowX) * 0.1;
+      glowY += (targetY - glowY) * 0.1;
+
+      project.style.setProperty('--glow-x', `${glowX}px`);
+      project.style.setProperty('--glow-y', `${glowY}px`);
+
+      rafId = requestAnimationFrame(updateGlow);
+    }
+
+    project.addEventListener('mousemove', (e) => {
+      const rect = project.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      project.classList.add('glowing');
+      project.setAttribute('data-target-x', x);
+      project.setAttribute('data-target-y', y);
+
+      if (!rafId) {
+        rafId = requestAnimationFrame(updateGlow);
+      }
+    });
+
+    // Add mouseout handler to remove glow
+    project.addEventListener('mouseleave', () => {
+      project.classList.remove('glowing');
+      project.style.setProperty('--glow-opacity', '0');
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    });
   });
 });
 
