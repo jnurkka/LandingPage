@@ -39,7 +39,6 @@ a {
     linear-gradient(to right, rgba(0,0,0,80%) 0%, rgba(0,0,0,0) 62%, rgba(0,0,0) 100%),
     url("bg-desktop.jpg") no-repeat;
   display: flex;
-  top: 0;
   background-size: cover;
   background-position-x: 60%;
 }
@@ -54,12 +53,23 @@ a {
 #sticky-heading {
   position: sticky;
   top: 8vmax;
+  transition: top 1s ease-in-out;
+  width: 100%;
+}
+
+#header-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 0 5vmax;
 }
 
 #job-title {
   position: absolute;
+  left: 5vmax;
+  top: 20vmax;
   width: 40%;
-  top: 14vmax;
+  transition: all 1s ease-in-out;
 }
 
 #current-position {
@@ -70,6 +80,10 @@ a {
   margin: 0 5vmax;
   color: #F9F3F4;
   transition: 1s ease-in-out;
+}
+
+#sticky-heading.content {
+  margin: 0;
 }
 
 #work {
@@ -235,19 +249,24 @@ a {
   border-color: rgba(75, 112, 165, 0.4);
 }
 
-#contact {
-  padding: 2rem 0;
+#social-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-#icons {
-  display: flex;
-  gap: 2rem;
-  padding: 1rem 0;
+.scrolled #social-links {
+  opacity: 0;
+  transform: translateX(20px);
+  pointer-events: none;
 }
 
 .socialicon {
   position: relative;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   transition: transform 0.3s ease;
   cursor: pointer;
 }
@@ -255,8 +274,8 @@ a {
 .socialicon::before {
   content: '';
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   background: radial-gradient(circle, rgba(75, 112, 165, 0.2), transparent 70%);
   border-radius: 50%;
   left: 50%;
@@ -270,7 +289,7 @@ a {
 .socialicon::after {
   content: '';
   position: absolute;
-  inset: -15px;
+  inset: -12px;
   border: 1px solid transparent;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(75, 112, 165, 0.5), transparent 70%) border-box;
@@ -285,7 +304,7 @@ a {
 }
 
 .socialicon:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 .socialicon:hover::before,
@@ -303,4 +322,8 @@ a {
 
 .socialicon:hover a {
   color: rgba(75, 112, 165, 1);
+}
+
+#contact {
+  display: none;
 }

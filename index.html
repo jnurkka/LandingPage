@@ -11,11 +11,18 @@
   <script src="index.js"></script>
 </head>
 <body>
-  <div id="sticky-heading" class="content">
-    <span id="greeting">Moi, I'm Jaakko 👋</span>
+  <div id="sticky-heading">
+    <div id="header-content">
+      <span id="greeting">Moi, I'm Jaakko 👋</span>
+      <div id="social-links">
+        <span class="socialicon"><a href="https://www.linkedin.com/in/jnurkka" aria-label="Check out my profile on LinkedIn"><i class="fab fa-linkedin"></i></a></span>
+        <span class="socialicon"><a href="https://www.instagram.com/jaakkonurkka" aria-label="Check out my profile on Instagram"><i class="fab fa-instagram"></i></a></span>
+        <span class="socialicon"><a href="#" aria-label="Write me an email" class="cryptedmail" data-name="jaakko" data-domain="nurkka" data-tld="me" onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"><i class="fas fa-envelope"></i></a></span>
+      </div>
+    </div>
   </div>
   <div id="intro">
-    <div id="job-title" class="content">
+    <div id="job-title">
       <h1 id="current-position">Co-Founder & CTO at <a href="https://www.cliniserve.de">Cliniserve</a></h1>
     </div>
   </div>

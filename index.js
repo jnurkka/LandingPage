@@ -49,19 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
   main.appendChild(renderSection(content.projects, 'Projects'));
   main.appendChild(renderSection(content.education, 'Education'));
 
-  // Add contact section
-  main.innerHTML += `
-    <h1>Contact.</h1>
-    <div id="contact" class="content">
-      <div id="icons">
-        <span class="socialicon"><a href="https://www.linkedin.com/in/jnurkka" aria-label="Check out my profile on LinkedIn"><i class="fab fa-linkedin"></i></a></span>
-        <span class="socialicon"><a href="https://www.instagram.com/jaakkonurkka" aria-label="Check out my profile on Instagram"><i class="fab fa-instagram"></i></a></span>
-        <span class="socialicon"><a href="https://www.facebook.com/jaakko.nurkka" aria-label="Check out my profile on Facebook"><i class="fab fa-facebook-square"></i></a></span>
-        <span class="socialicon"><a href="#" aria-label="Write me an email" class="cryptedmail" data-name="jaakko" data-domain="nurkka" data-tld="me" onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"><i class="fas fa-envelope"></i></a></span>
-      </div>
-    </div>
-  `;
-
   // Initialize expand/collapse functionality
   const projects = document.querySelectorAll('.project');
   projects.forEach(project => {
@@ -131,6 +118,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+// Add contact section
+document.getElementById('contact-container').innerHTML = `
+  <h1>Contact.</h1>
+  <div id="contact" class="content">
+    <div id="icons">
+      <span class="socialicon"><a href="https://www.linkedin.com/in/jnurkka" aria-label="Check out my profile on LinkedIn"><i class="fab fa-linkedin"></i></a></span>
+      <span class="socialicon"><a href="https://www.instagram.com/jaakkonurkka" aria-label="Check out my profile on Instagram"><i class="fab fa-instagram"></i></a></span>
+      <span class="socialicon"><a href="#" aria-label="Write me an email" class="cryptedmail" data-name="jaakko" data-domain="nurkka" data-tld="me" onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"><i class="fas fa-envelope"></i></a></span>
+    </div>
+  </div>
+`;
 
 // Scroll handler
 window.onscroll = function() {
