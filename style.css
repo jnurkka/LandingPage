@@ -1,21 +1,30 @@
 @import url("https://fonts.googleapis.com/css?family=Cookie");
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300..800;1,300..800&display=swap');
 
+/* Custom Properties */
+:root {
+  --color-primary: #4B70A5;
+  --color-text: #F9F3F4;
+  --color-bg: #000;
+  --transition-default: 0.3s ease;
+  --transition-slow: 1s ease-in-out;
+}
+
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
   font-family: 'Open Sans Condensed', sans-serif;
-  color: #F9F3F4;
-  background-color: #000;
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }
 
 h1 {
   font-size: 4.5vmax;
   font-weight: 600;
   margin: 1rem 0;
-  color: #F9F3F4;
+  color: var(--color-text);
 }
 
 h2 {
@@ -53,7 +62,7 @@ a {
 #sticky-heading {
   position: sticky;
   top: 8vmax;
-  transition: top 1s ease-in-out;
+  transition: top var(--transition-slow);
   width: 100%;
 }
 
@@ -69,7 +78,7 @@ a {
   left: 5vw;
   top: 20vmax;
   width: 40%;
-  transition: all 1s ease-in-out;
+  transition: all var(--transition-slow);
 }
 
 #current-position {
@@ -78,8 +87,8 @@ a {
 
 .content {
   margin: 0 5vw;
-  color: #F9F3F4;
-  transition: 1s ease-in-out;
+  color: var(--color-text);
+  transition: var(--transition-slow);
 }
 
 #sticky-heading.content {
@@ -99,7 +108,7 @@ a {
   border-radius: 12px;
   padding: 2rem 2.5rem;
   margin: 1rem 0;
-  transition: all 0.3s ease;
+  transition: all var(--transition-default);
   position: relative;
   overflow: hidden;
 }
@@ -116,7 +125,7 @@ a {
   transform: translate(-50%, -50%);
   pointer-events: none;
   opacity: var(--glow-opacity, 0);
-  transition: opacity 0.3s ease, left 0.5s ease-out, top 0.5s ease-out;
+  transition: opacity var(--transition-default), left 0.5s ease-out, top 0.5s ease-out;
   z-index: 1;
 }
 
@@ -137,7 +146,7 @@ a {
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-default);
   z-index: 1;
 }
 
@@ -164,7 +173,7 @@ a {
 .title {
   font-size: 1.8rem;
   margin: 0.5rem 0;
-  color: #F9F3F4;
+  color: var(--color-text);
 }
 
 .date {
@@ -186,11 +195,11 @@ a {
   color: #4B70A5;
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.2s ease;
+  transition: color var(--transition-default);
 }
 
 .project a:hover {
-  color: #F9F3F4;
+  color: var(--color-text);
 }
 
 .date {
@@ -241,7 +250,7 @@ a {
 .read-more:hover {
   background: rgba(75, 112, 165, 0.1);
   border-color: rgba(75, 112, 165, 0.4);
-  color: #F9F3F4;
+  color: var(--color-text);
 }
 
 .project.expanded .read-more {
@@ -316,8 +325,8 @@ a {
   position: relative;
   z-index: 2;
   text-decoration: none;
-  color: #F9F3F4;
-  transition: color 0.3s ease;
+  color: var(--color-text);
+  transition: color var(--transition-default);
 }
 
 .socialicon:hover a {
@@ -341,12 +350,12 @@ a {
   border-radius: 1.75rem;
   background: rgba(75, 112, 165, 0.1);
   border: none;
-  color: #F9F3F4;
+  color: var(--color-text);
   font-size: 1.2rem;
   cursor: pointer;
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.5s ease;
+  transition: all var(--transition-default);
   pointer-events: none;
   z-index: 1000;
   padding: 0 1.2rem;
