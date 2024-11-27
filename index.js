@@ -57,19 +57,32 @@ function initializeGlowEffect(element) {
     rafId = requestAnimationFrame(updateGlow);
   }
 
-  element.addEventListener('mousemove', (e) => {
+  function updateGlowPosition(e) {
     const rect = element.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    element.classList.add('glowing');
     element.setAttribute('data-target-x', x);
     element.setAttribute('data-target-y', y);
+    return { x, y };
+  }
 
+  function startGlow(e) {
+    const pos = updateGlowPosition(e);
+    // Set initial glow position to mouse position
+    glowX = pos.x;
+    glowY = pos.y;
+    element.style.setProperty('--glow-x', `${glowX}px`);
+    element.style.setProperty('--glow-y', `${glowY}px`);
+
+    element.classList.add('glowing');
     if (!rafId) {
       rafId = requestAnimationFrame(updateGlow);
     }
-  });
+  }
+
+  element.addEventListener('mouseenter', startGlow);
+  element.addEventListener('mousemove', updateGlowPosition);
 
   element.addEventListener('mouseleave', () => {
     element.classList.remove('glowing');
