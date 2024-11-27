@@ -107,9 +107,9 @@ a {
 .project::before {
   content: '';
   position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(75, 112, 165, 0.2), transparent 70%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(75, 112, 165, 0.25), transparent 80%);
   border-radius: 50%;
   left: var(--glow-x, 50%);
   top: var(--glow-y, 50%);
@@ -128,8 +128,8 @@ a {
   border-radius: 12px;
   background: radial-gradient(
     circle at var(--glow-x, 50%) var(--glow-y, 50%),
-    rgba(75, 112, 165, 0.5),
-    transparent 70%
+    rgba(75, 112, 165, 0.6),
+    transparent 80%
   ) border-box;
   -webkit-mask:
     linear-gradient(#fff 0 0) padding-box,
