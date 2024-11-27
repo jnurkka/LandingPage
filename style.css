@@ -327,3 +327,122 @@ a {
 #contact {
   display: none;
 }
+
+#main {
+  padding-bottom: 8rem;  /* Add space for the expanded button */
+}
+
+#back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  min-width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1.75rem;
+  background: rgba(75, 112, 165, 0.1);
+  border: none;
+  color: #F9F3F4;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+  pointer-events: none;
+  z-index: 1000;
+  padding: 0 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  white-space: nowrap;
+}
+
+#back-to-top i {
+  position: relative;
+  z-index: 2;
+  transition: margin 0.5s ease;
+}
+
+#back-to-top .button-text {
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-width 0.5s ease, opacity 0.3s ease 0.2s;
+  font-size: 1rem;
+}
+
+#back-to-top.expanded {
+  min-width: 8.5rem;
+}
+
+#back-to-top.expanded .button-text {
+  opacity: 1;
+  max-width: 200px;
+}
+
+#back-to-top.expanded i {
+  margin-right: 0.5rem;
+}
+
+#back-to-top::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(75, 112, 165, 0.15);
+  border-radius: 1.75rem;
+  background: radial-gradient(
+    circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(75, 112, 165, 0.5),
+    transparent 70%
+  ) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#back-to-top.expanded {
+  min-width: 8.5rem;
+}
+
+#back-to-top.expanded .button-text {
+  opacity: 1;
+  max-width: 200px;
+}
+
+#back-to-top.expanded i {
+  margin-right: 0.5rem;
+}
+
+#back-to-top:hover::before {
+  opacity: 1;
+}
+
+#back-to-top:hover::after {
+  opacity: 1;
+}
+
+#back-to-top::before {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(75, 112, 165, 0.2), transparent 70%);
+  border-radius: 50%;
+  left: var(--glow-x, 50%);
+  top: var(--glow-y, 50%);
+  transform: translate(-50%, -50%);
+  opacity: var(--glow-opacity, 0);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}

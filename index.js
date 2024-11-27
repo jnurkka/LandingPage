@@ -117,19 +117,57 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-});
 
-// Add contact section
-document.getElementById('contact-container').innerHTML = `
-  <h1>Contact.</h1>
-  <div id="contact" class="content">
-    <div id="icons">
-      <span class="socialicon"><a href="https://www.linkedin.com/in/jnurkka" aria-label="Check out my profile on LinkedIn"><i class="fab fa-linkedin"></i></a></span>
-      <span class="socialicon"><a href="https://www.instagram.com/jaakkonurkka" aria-label="Check out my profile on Instagram"><i class="fab fa-instagram"></i></a></span>
-      <span class="socialicon"><a href="#" aria-label="Write me an email" class="cryptedmail" data-name="jaakko" data-domain="nurkka" data-tld="me" onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"><i class="fas fa-envelope"></i></a></span>
-    </div>
-  </div>
-`;
+  // Initialize back to top button
+  const backToTop = document.getElementById('back-to-top');
+
+  // Add glow effect to back to top button
+  let buttonGlowX = 0;
+  let buttonGlowY = 0;
+  let buttonRafId = null;
+
+  function updateButtonGlow() {
+    if (!backToTop.matches(':hover')) return;
+
+    const targetX = parseFloat(backToTop.getAttribute('data-target-x') || 0);
+    const targetY = parseFloat(backToTop.getAttribute('data-target-y') || 0);
+
+    buttonGlowX += (targetX - buttonGlowX) * 0.1;
+    buttonGlowY += (targetY - buttonGlowY) * 0.1;
+
+    backToTop.style.setProperty('--glow-x', `${buttonGlowX}px`);
+    backToTop.style.setProperty('--glow-y', `${buttonGlowY}px`);
+
+    buttonRafId = requestAnimationFrame(updateButtonGlow);
+  }
+
+  backToTop.addEventListener('mousemove', (e) => {
+    const rect = backToTop.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    backToTop.setAttribute('data-target-x', x);
+    backToTop.setAttribute('data-target-y', y);
+
+    if (!buttonRafId) {
+      buttonRafId = requestAnimationFrame(updateButtonGlow);
+    }
+  });
+
+  backToTop.addEventListener('mouseleave', () => {
+    if (buttonRafId) {
+      cancelAnimationFrame(buttonRafId);
+      buttonRafId = null;
+    }
+  });
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+});
 
 // Scroll handler
 window.onscroll = function() {
@@ -143,5 +181,20 @@ window.onscroll = function() {
     document.getElementById("greeting").innerText = "Jaakko Nurkka";
     document.getElementById("job-title").style.top = "0";
     document.getElementById("job-title").style.opacity = "0%";
+  }
+
+  const backToTop = document.getElementById('back-to-top');
+  const isAtBottom = window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 100;
+
+  if (window.pageYOffset <= window.innerHeight) {
+    backToTop.classList.remove('visible');
+    backToTop.classList.remove('expanded');
+  } else {
+    backToTop.classList.add('visible');
+    if (isAtBottom) {
+      backToTop.classList.add('expanded');
+    } else {
+      backToTop.classList.remove('expanded');
+    }
   }
 }
