@@ -4,8 +4,8 @@ const content = {
         {
             date: "2017 - ",
             title: "Co-Founder & CTO Cliniserve",
-            summary: "We make nursing better! We are building a next-gen operating system for care operations that helps reduce workload on nurses in stationary care settings like hospitals and nursing homes.",
-            details: "It automates communication and improves the delegation of tasks based on qualification and availability. This way we contribute to reducing the effects of the global personnel shortage in patient care. I am responsible for designing and building the system together with my team as well as HR and recruiting.",
+            summary: "We make nursing better! We are building a next-gen operating system for patient care operations, helping reduce workload on nurses in stationary care settings. Our CARE solution improves communication and task delegation based on qualification and availability, whereas our TEAM solution allows flexible coordination of available staff to counter shortfalls across the organisation. This way we contribute to reducing the effects of the global personnel shortage in patient care.",
+            details: "As CTO, I've been responsible for overseeing product development, setting up and maintaining technical infrastructure, devops and quality assurance processes as well as establishing and developing a strong engineering culture. In 2023, I also took over the role of CPO, overseeing product strategy and product management. Beyond the product-related responsibilities, I've also been responsible for HR and recruiting.",
             link: {
                 url: "https://cliniserve.com",
                 text: "cliniserve.com"
@@ -14,8 +14,7 @@ const content = {
         {
             date: "2017",
             title: "Freelance - Cargo Ship Sales and Chartering Platform",
-            summary: "Consulting project with the purpose of identifying digital business opportunities in ocean shipping and adjacent industries.",
-            details: "As a result of the project, we developed a business model and a prototype for a SaaS platform for digitising the process of auctioning and chartering cargo ships."
+            summary: "Consulting project with the purpose of identifying digital business opportunities in ocean shipping and adjacent industries. As a result of the project, we developed a business model and a prototype for a SaaS platform for digitising the process of auctioning and chartering cargo ships.",
         },
         {
             date: "2016",
@@ -29,20 +28,17 @@ const content = {
         {
             date: "2016",
             title: "Student Consulting - Future of Grocery Retail Analysis",
-            summary: "In a 4-person team, we developed a product strategy proposal that included trend analysis in the field of brick-and-mortar grocery retail and the development of technical concepts to leverage new opportunities presented e-commerce innovation.",
-            details: "We presented our results to the executive board of the Viessmann Group."
+            summary: "In a 4-person team, we developed a product strategy proposal that included trend analysis in the field of brick-and-mortar grocery retail and the development of technical concepts to leverage new opportunities presented e-commerce innovation. We presented our results to the executive board of the Viessmann Group.",
         },
         {
             date: "2015",
             title: "Student Consulting - Employee Competence Management - HRM SaaS Solution",
-            summary: "In a 4-person team, we built a learning and competence management feature to the Personio SaaS HRM suite.",
-            details: "The project spanned all product development steps from identifying a customer need to building a functional MVP."
+            summary: "In a 4-person team, we built a learning and competence management feature to the Personio SaaS HRM suite. The project spanned all product development steps from identifying a customer need to building a functional MVP.",
         },
         {
             date: "2015",
             title: "Business Case Study Competition - IEM Student of the Year",
-            summary: "In a pan-european competition of solving harvard business cases, our 4-person team was crowned the Industrial Engineering & Management students of the year as the winners of TIMES, Tournament In Management and Engineering Skills, finishing as the best out of 250 teams in Europe.",
-            details: "Our victory was achieved through winning the local qualification in Munich, the semi-final in Ankara and the final in Darmstadt.",
+            summary: "In a pan-european competition of solving harvard business cases, our 4-person team was crowned the Industrial Engineering & Management students of the year as the winners of TIMES, Tournament In Management and Engineering Skills, finishing as the best out of 250 teams in Europe. Our victory was achieved through winning the local qualification in Munich, the semi-final in Ankara and the final in Darmstadt.",
             link: {
                 url: "https://estiem.org/events/times",
                 text: "estiem.org"
@@ -51,8 +47,7 @@ const content = {
         {
             date: "2012",
             title: "Extracurricular - Expense Management Software for the Guild of Industrial Engineering and Management",
-            summary: "During my studies, I was active in the extracurricular activities of a student guild (Indecs).",
-            details: "In one of the many projects, I built an expense management software for the guild in order to simplify the expense management process."
+            summary: "During my studies, I was active in the extracurricular activities of a student guild (Indecs). In one of the many projects, I built an expense management software for the guild in order to simplify the expense management process.",
         }
     ],
     education: [
