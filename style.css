@@ -8,6 +8,10 @@
   --color-bg: #000;
   --transition-default: 0.3s ease;
   --transition-slow: 1s ease-in-out;
+
+  /* Spacing */
+  --spacing-page: 5vw;
+  --spacing-section: 1rem;
 }
 
 html, body {
@@ -70,44 +74,30 @@ a {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-  margin: 0 5vw;
+  margin: 0 var(--spacing-page);
 }
 
 #job-title {
   position: absolute;
-  left: 5vw;
+  left: var(--spacing-page);
   top: 20vmax;
   width: 40%;
   transition: all var(--transition-slow);
-}
-
-#current-position {
-  line-height: 100%;
-}
-
-.content {
-  margin: 0 5vw;
-  color: var(--color-text);
-  transition: var(--transition-slow);
-}
-
-#sticky-heading.content {
-  margin: 0;
 }
 
 #work {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding: 1rem 0;
+  padding: var(--spacing-section) 0;
 }
 
 .project {
   background: rgba(75, 112, 165, 0.1);
   border: 1px solid rgba(75, 112, 165, 0.15);
   border-radius: 12px;
-  padding: 2rem 2.5rem;
-  margin: 1rem 0;
+  padding: 2rem;
+  margin: var(--spacing-section) 0;
   transition: all var(--transition-default);
   position: relative;
   overflow: hidden;
@@ -454,4 +444,14 @@ a {
   opacity: var(--glow-opacity, 0);
   transition: opacity 0.3s ease;
   pointer-events: none;
+}
+
+.content {
+  margin: 0 var(--spacing-page);
+  color: var(--color-text);
+  transition: var(--transition-slow);
+}
+
+#sticky-heading.content {
+  margin: 0;
 }
